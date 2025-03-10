@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-require('dotenv').config();
 import axios from "axios";
 
 const initialState = {
