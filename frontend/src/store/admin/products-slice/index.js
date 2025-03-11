@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+const URL = import.meta.env.VITE_API_URL
 
 const initialState = {
   isLoading: false,
@@ -11,7 +11,7 @@ export const addNewProduct = createAsyncThunk(
   "/products/addnewproduct",
   async (formData) => {
     const result = await axios.post(
-      `${process.env.URL}/api/admin/products/add`,
+      `${URL}/api/admin/products/add`,
       formData,
       {
         headers: {
@@ -28,7 +28,7 @@ export const fetchAllProducts = createAsyncThunk(
   "/products/fetchAllProducts",
   async () => {
     const result = await axios.get(
-      `${process.env.URL}/api/admin/products/get`
+      `${URL}/api/admin/products/get`
     );
 
     return result?.data;
@@ -39,7 +39,7 @@ export const editProduct = createAsyncThunk(
   "/products/editProduct",
   async ({ id, formData }) => {
     const result = await axios.put(
-      `${process.env.URL}/api/admin/products/edit/${id}`,
+      `${URL}/api/admin/products/edit/${id}`,
       formData,
       {
         headers: {
@@ -56,7 +56,7 @@ export const deleteProduct = createAsyncThunk(
   "/products/deleteProduct",
   async (id) => {
     const result = await axios.delete(
-      `${process.env.URL}/api/admin/products/delete/${id}`
+      `${URL}/api/admin/products/delete/${id}`
     );
 
     return result?.data;
